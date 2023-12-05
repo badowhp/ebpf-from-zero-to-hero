@@ -1,0 +1,33 @@
+desc "Convert slide deck into HTML"
+task :html do
+  sh "npx @marp-team/marp-cli@latest slides/slide-deck.md"
+end
+
+desc "Convert slide deck into PDF"
+task :pdf do
+  sh "npx @marp-team/marp-cli@latest slides/slide-deck.md --pdf"
+end
+
+desc "Convert slide deck into PowerPoint document (PPTX)"
+task :pptx do
+  sh "npx @marp-team/marp-cli@latest slides/slide-deck.md --pptx"
+end
+
+desc "Watch mode"
+task :watch do
+  sh "npx @marp-team/marp-cli@latest -w slides/slide-deck.md"
+end
+
+desc "Server mode (Pass directory to serve)"
+task :server do
+  sh "npx @marp-team/marp-cli@latest -s ./slides"
+end
+
+desc "Convert slide deck into HTML, PDF, and PPTX"
+task :all => [:html, :pdf, :pptx]
+
+# Add additional tasks as needed
+
+# Default task
+task :default => [:html]
+
